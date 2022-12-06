@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <title>| Web na míru </title> 
+      <meta name="description" content="?"/> 
+      <meta name="robots" content="noindex, nofollow">
+      <meta charset="UTF-8">
+      <meta name="keywords" content="">
+      <link rel="shortcut icon" href=".ico" type="image/x-icon">  
+      <script src="https://kit.fontawesome.com/d60d428278.js" crossorigin="anonymous"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+      <link rel="canonical" href="w.com">
+
+ 
+      <style>
+        body {
+            margin:0;width:100%;
+        }  
+        nav {
+            background-image:linear-gradient(to right, #1ca1ca,#00d665);
+            
+            text-align:center;
+            height:4vh;
+            padding-top:2vh;
+            padding-bottom:2vh;
+        }
+        :root{
+            --menumar:3vh;
+        }
+        #menu-title{
+            color:white;
+            font-family:'Poppins';
+            font-weight:bold;
+            font-size: 2.7vh;
+            padding:0;
+            margin:0;
+            float:none;
+            margin-right:calc( var(--menumar) + 3vh);
+        }
+        #menu-icon{
+            color: #ffe347;
+        }
+        #arr2{
+            display:none;
+            animation-name: menu-div;
+            animation-duration: 1s;
+        }        
+        #m-menu-center{
+            padding:10vw;
+        }
+        .m-button{
+            background:transparent;
+            border:none;
+            color:white;
+            font-size:2vh;
+            display:inline-block;
+            margin-left:var(--menumar);
+            float:left;
+            width:3vh; 
+        }
+        .m-button i{
+            color:white;
+            font-size:3vh;}
+        @keyframes menu-div {
+            0% {transform: translate(-100%, 0px);}/*druhe cislo nazacatku v minusu a doluv plusu je animace odshora dolu*/
+            20% {transform: translate(-1%, 0px);}
+            100% {transform: translate( 0px, 0px);}
+        }    
+        .menu-div-mobile a{
+            text-decoration:none;
+            font-family:sans-serif;
+            font-weight:bolder;
+            margin-bottom: 20vw;
+            color: #4380a7;
+        }
+        .menu-div-mobile i{
+            color: #21455c;
+            font-size:19vw;                
+        }
+        #thispage{
+            color:gold;
+        }
+        .menu-div-mobile{
+            margin-top:2.1vh;
+            animation-name: menu-div;
+            animation-duration: 1s;
+            display: none;
+            z-index:1;
+            background:#f8fcfd;
+            width:100%;
+            height:93vh;/*100-vyskamenu (10vh)*/
+            position:absolute;
+            /*touch-action:none;
+        /*position:aboslute - stranka se nehne, bez toghohle se posune dolu;*/
+        }
+        .dropdiv{
+            width:100%;
+            position: relative;
+            display: inline-block;
+        }
+    
+        input[type=checkbox] {
+            display: none;
+        }
+        #overlay{
+            display:none;
+        }        
+        input[type=checkbox]:checked ~ .menu-div-mobile {
+            display: block;
+        }
+        input[type=checkbox]:checked ~ .m-button #arr1{
+            display:none;
+        }input[type=checkbox]:checked ~ .m-button #arr2{
+            display:inline;
+        }   
+      </style>
+      <style>
+        #menu-div-pc{
+            display:none;
+        }
+        @media screen and (min-width: 913px), (min-width: 600px) and (orientation: landscape){
+            nav{
+                height:5.2vh;
+                padding-top:2vh;
+                padding-bottom:2vh;
+            }
+            #menu-title{
+                font-size: 3.5vh;
+                padding:0;
+                margin:0;
+                float:left;
+                margin-left:calc( var(--menumar) + 3vh);
+              }
+            .m-button{
+                display:none; 
+            }.menu-div-mobile{
+                display: none;
+            }#menu-div-pc{
+                display: inline-block;
+                float: right;
+                margin-right:calc( var(--menumar) + 3vh);
+                margin-top: 0.5vh;
+                
+            }#menu-div-pc a{
+                color:white;
+                font-family:'Poppins',sans-serif;
+                font-size: calc(0.5rem + 1.5vh);
+                padding-right: 2vw;
+                text-decoration: none;
+            }
+        }
+      </style>
+      <style>
+        .uv1 {
+            text-decoration: none; 
+            position: relative; 
+        }   
+        .uv1::after {
+            position: absolute;
+            content: '';
+            height: 2px;
+            bottom: -4px; 
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            width: 80%;
+            background: gold;
+            transition:.5s;
+        }
+        .uv1:hover:after {
+            width: 90%;
+            background: gold;
+        }
+        @media screen and (min-width: 913px), (min-width: 600px) and (orientation: landscape){
+            
+            .uv3 {
+                text-decoration: none; 
+                position: relative; 
+            }   
+            .uv3::after {
+                position: absolute;
+                content: '';
+                height: 2px;
+                bottom: -2px; 
+                margin: 0 auto;
+                left: 0;
+                right: 0;
+                width: 70%;
+                background: whitesmoke;
+                transition:.5s;
+                border-radius: 3px;
+                left:0;
+            }.uv3:hover:after{
+                width: 90%;
+                background: gold;
+                height:3px;
+                bottom:-3px;
+            }.uv4::after{
+                content: '';
+                background: gold;
+                
+            }
+        }
+      </style>
+      <style>/*Primary div*/
+        #primary{
+            padding: 0vh;
+            color: #252525;
+            text-align: center;
+            font-family: 'Muli', sans-serif;
+        }
+        #h_main{
+            font-size: 7vw;
+            font-family:'Poppins',sans-serif;
+            margin: 2rem;
+        }#div_01{
+            position:relative;
+            text-align:center;
+        }#di_img{
+            width:100%;
+            opacity: 0.75;
+        }
+        @media screen and (min-width: 913px), (min-width: 600px) and (orientation: landscape){
+            #h_main{
+                position: absolute;
+                top: 30%;
+                /*transform: translate(-50%, -50%);*/
+                background: rgba(0,0,0,0.75);
+                color: white;
+                border: 0;
+                border-radius: 0.4em;
+                padding: 0.4em;
+                width: 46vw;
+                left: calc(27vw - 0.8em);
+                margin: 0;               
+
+                font-size: calc(2.5vw - 0.6vh);
+            }#div_01{ opacity: 0.65;}
+            #img-div{
+                background-image: url("bg_pc.jpg");
+                height: 35vw; 
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }            
+            #di_img{
+                display: none;
+            }
+        }
+
+      </style>
+            <style>
+                footer{
+                  background-image: linear-gradient(180deg, #111 , #222 );      
+      
+                  text-align:center;
+                  
+                }
+                #footer-title{
+                  color:white;
+                  font-family:'Poppins';
+                  font-weight:bold;
+                  font-size: 2.7vh;
+                  
+      
+                }
+                #footer-text{
+                    color: #cacdd2;
+                    font-family: Poppins;
+                    width: 60vw;
+                    margin-left: 18vw;
+                    margin-bottom:0;
+                }
+                #footer-div p{
+                  color: #cacdd2;
+                    font-family: Poppins;
+                    
+                  
+                }
+                #footer-div a {
+                  color: #44bae8;
+          font-size: 16px;
+          text-decoration: none;
+                }
+                #footer-div{
+                  background-color: #000;    word-spacing: 2px;
+              /*text-transform: capitalize;*/padding: 0.5rem;padding-bottom: 0.5rem;
+                }
+            </style>
+      <style>
+          #div_text{
+            padding: 2rem;
+            padding-top: 0.3rem;
+            font-size: 1.2rem;
+            font-family: 'system-ui';
+            
+          }#perex{
+          }
+          #text_selector{
+              text-align: left;
+          }
+          #img1{
+            width: 60%;
+            margin-left: 20%;
+            margin-top: 1rem;
+          }
+          
+          #kategorie{
+              display: flex;
+            color: #1792b8;  
+            text-decoration: none;   
+            font-size: 1.4rem;      
+            flex-direction: column; 
+          }#kategorie div{
+              flex: 1;
+              text-align: center;
+              
+              
+          }#kategorie a{
+            border: none;
+            color: white;
+            /*00b0bd*/
+            
+            border-radius: 10rem;      
+            padding: 1.4vh 2.2vh 1.4vh 2.2vh;
+          }
+          #btn_1{
+                background-image: linear-gradient(180deg, #37aacd, #4ae800);font-family: Poppins;
+          }
+          #btn_2{background-image: linear-gradient(180deg, #4ae800 , #f3ff47 /*#c400d6*/);font-family: Poppins;}               
+          #btn_3{background-image: linear-gradient(180deg, #eeff00 /*#c431d1*/ , #da60ff);font-family: Poppins;}
+            
+
+          @media screen and (min-width: 913px), (min-width: 600px) and (orientation: landscape){
+            #div_text{text-align: center;font-family: 'Poppins';font-size: 1.1rem;margin-top: 2rem;}
+
+            #text_selector{
+              width: 50%;
+              margin: 0 25% 0 25%;
+            }
+            #img1{
+                width: 30%;
+                margin-left: 35%;
+            }
+            #kategorie{
+                flex-direction: row; 
+            }#kategorie a{    
+                padding: 1.4vh 2.2vh 1.4vh 2.2vh;
+                margin: ;
+            }#kategorie br{
+                display:none;
+            }
+            #btn_1{
+                background-image: linear-gradient(144deg, #37aacd, #4ae800);
+            }
+            #btn_2{background-image: linear-gradient(144deg, #44d600 , #eeff00 /*#c400d6*/);}               
+            #btn_3{ background-image: linear-gradient(144deg, #eeff00 /*#c431d1*/ 20%, #c300ff);}
+            #footer-text{
+              width: 42vw;
+              margin-left: 27vw;
+            }
+          }
+      </style>    
+
+   
+  </head>
+  <body>
+      <nav>
+        <input type="checkbox" id="dropbtn"/>
+        
+        <label class="m-button" for="dropbtn" style="line-height:5vh;"><i id="arr1" class="fa fa-reorder" style="font-size:200%;"></i><i id="arr2"class="fa fa-remove" style="font-size:200%;"></i></label>
+        <span id="menu-title"><i id="menu-icon"class="fas fa-brain"></i> Vše o <span id="menu-icon">m</span>ozku </span>
+        <div id="menu-div-pc">
+            <a href="" id="thispage"><span class="uv3 uv4">Úvodní </span>stránka</a>
+            <a href=""><span class="uv3">Články</span></a>
+            <a href=""><span class="uv3">Do školy</span></a>
+            <a href=""><span class="uv3">O nás</span></a>
+
+        </div>
+        <div class="menu-div-mobile">
+            <div id="m-menu-center">
+                <br>
+                <a href="" id="thispage" style="color:gold;font-size:92%vw;"><i class="fas fa-home" style="color:gold;font-size:12vw;"></i><br><br>DOMŮ</a><br><br><br>
+                
+                <a href=""><i class="fas fa-coffee"></i><br><br>ČLÁNKY</a><br><br><br>
+                <a href=""><i class="fas fa-book-reader"style="font-size:20vw;"></i><br><br>DO ŠKOLY</a><br><br><br>
+                <a href=""><i class="fas fa-user-friends"></i><br><br>O NÁS</a><br><br><br>
+            </div>  
+        </div>  
+      </nav> 
+      
+
+      <div id="primary">
+          <header>
+
+          </header>
+          <div id="div_01">
+            <div id="img-div">
+                <img id="di_img" src="bg.jpg" alt="Nakreslený mozek nad nataženou rukou na šedém pozadí ">
+            </div>
+            <h1 id="h_main">Mozek, myšlenky, emoce aneb co stojí za naším vnímáním světa nebo náladou?</h1>            
+          </div>
+          <div id="div_text">
+            <div id="text_selector">
+              <p id="perex">Mozku se říká nejsložitější věc ve vesmíru a dodnes je pro lidstvo záhadou. Má ho každý z nás (i když to tak nemusí vypadat) a přesto je každý mozek <b>jedinečný</b>, utváří <b>nás</b>, naši <b>náladu (emoce)</b>, naše vzpomínky a <b>tvoří naši realitu.</b></p>
+              <p>Přemýšleli jste třeba někdy nad tím, že náš mozek nikdy neviděl svět, nikdy neopustil naši hlavu? A stejně díky senzorům, jakými jsou například oči nebo uši, vidíme a vnímáme, ale <b>realitu</b> samotnou <b> utváří náš mozek</b>. Mozek je fascinující, stejně jako věci které se díky němu dějí. A čím líp mu budeme rozumět, tím lepší život můžeme vést. Proč?</p>
+              <p>Pojďme si uvést jeden příklad. Zítra máte důležitou zkoušku. Jak dlouho do noci se budete učit? A kolik času ztratíte učením se něčeho, na co si další den nevzpomenete? Možná že tomu dáte všechno a stejně se to nepovede. Nebo si jen zběžně pročtete co potřebujete a ono se to povede. Pokud budete vědět, jak paměť pracuje, a co ovlivňuje vybavování vzpomínek, máte mnohem větší šanci, že si odpovědi vybavíte a budete je umět vysvětlit.</p>
+              <img id="img1" src="brain.png" alt="Barevná ilustrace mozku">
+              <p>A co naše emoce? Vždyť kdo by občas "nevyletěl", kdo občas nezabředne do smutnějších myšlenek a kdo by neznal ty krásné pocity když se nám něco povede? Do určité míry emoce nelze ovlivnit, ale pokud člověk svým pocitům rozumí a chápe je, může se mnohem snáz ovládat, být mnohem <b>šťastnější</b> a umět některé věci hodit za hlavu. <br><br>Umět ovládat své emoce a pocity je něco co je v životě velmi důležité, ať už pro vztahy a naše jednání s lidmi, naše cíle a motivace nebo pro umění házet některé věci za hlavu.</p>
+              <img id="img1" src="emotions.png" alt="Černobílá ikona emoce">
+              <p>Máme pro vás sérii článků, rozdělených do tří základních kategorií. Připravili jsme si pro vás široké spektrum témat, od funkcí mozku přes zajímavosti a tipy až po věci jako je láska. Začněte teď hned!</p>
+              <br>
+              <br>
+              <div id="kategorie">
+                    <div><a id="btn_1">Paměť</a> </div><br>
+                    <div><a id="btn_2">Mozek</a> </div><br>
+                    <div><a id="btn_3">Emoce</a> </div><br>
+              </div>
+              <br>
+              <br>
+              <p>Tak jen do toho!</p>
+            </div>
+          </div>
+      </div>
+    
+      
+      <footer>
+        <br>
+        <span id="footer-title">Vše o <span id="menu-icon">m</span>ozku</span>
+        <p id="footer-text">Vše o mozku je web, který předává informace o různorodých tématech souvisejících s mozkem, psychologií a naším vnímáním. Každé téma je jednoduše vysvětleno, tak aby dávalo smysl a každý měl možnost se o sobě něco dozvědět.<br><br></p><br>
+        <div id="footer-div" style=""><p>Copyright ©2021 <a href="#">Vše o mozku</a>  </p></div>
+    </footer>       
+  </body>
+</html>
